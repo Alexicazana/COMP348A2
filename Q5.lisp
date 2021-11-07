@@ -1,0 +1,38 @@
+;Make it print as a list
+;This is a recursive version, TODO iterative
+(defun tribonacci-seq (n)
+    (if(<= n 2)
+        (if(= n 0)
+            ()
+            (car '(0))
+        )
+        (if(= n 3)
+            (car '(1))
+            (+ (tribonacci-seq (- n 1)) (tribonacci-seq (- n 2)) (tribonacci-seq (- n 3)))
+        )
+    )
+)
+
+;iterative (done)
+(defun tribonacci-seq (n)
+    (if(> n 0)
+        (if (< n 3)
+            (car '(0))
+        
+            (let ((i 3) (a 0) (b 0) (c 1))
+                (setf lst '(0 0 1))
+                (loop
+                    (when (= i n) (return lst))
+                    (setf new (+ a b c) )
+                    (setf a b)
+                    (setf b c)
+                    (setf c new)
+                    (setf lst (append lst (cons new nil) ))
+                    (incf i)
+                )   
+            )
+        )
+    )
+
+)
+(print (tribonacci-seq 7) )
